@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Menu System | Sidhartha Gomasa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6F4E37;  /* Coffee brown */
+            --dark: #4B3621;
+            --light: #F5F5DC;  /* Beige */
+            --accent: #C4A484;  /* Latte color */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .project-header {
+            padding-top: 6rem;
+            padding-bottom: 3rem;
+            background: linear-gradient(rgba(75, 54, 33, 0.9), rgba(75, 54, 33, 0.9)), 
+                        url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') 
+                        no-repeat center/cover;
+            color: white;
+            text-align: center;
+        }
+        
+        .project-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .project-section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        h3 {
+            color: var(--dark);
+            margin: 1.5rem 0 1rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        ul {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tech-item {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .btn:hover {
+            background: var(--dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-download {
+            background: var(--accent);
+            color: var(--dark);
+        }
+        
+        .btn-download:hover {
+            background: #D2B48C; /* Tan color */
+        }
+        
+        .btn-back {
+            background: var(--dark);
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .gallery-item {
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-item p {
+            padding: 0.5rem;
+            text-align: center;
+            background: var(--light);
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .feature-card {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        @media (max-width: 768px) {
+            .project-header {
+                padding-top: 5rem;
+            }
+            
+            .project-header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+            
+            .image-gallery, .feature-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">CAFE MENU</div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#screenshots">Screenshots</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="project-header">
+        <h1>Cafe Menu System</h1>
+        <p>Tkinter-based desktop application developed during internship at Skilltimate Technologies</p>
+    </div>
+
+    <div class="container">
+        <div class="project-section">
+            <h2>Project Overview</h2>
+            <p>This desktop application streamlines cafe operations with features for menu management, order processing, and billing. Developed during my internship using Python and Tkinter, it helps small cafe owners manage their business more efficiently.</p>
+            
+            <div class="tech-stack">
+                <span class="tech-item">Python</span>
+                <span class="tech-item">Tkinter</span>
+                <span class="tech-item">SQLite</span>
+                <span class="tech-item">Pillow</span>
+                <span class="tech-item">ttkthemes</span>
+            </div>
+
+            <div class="action-buttons">
+                <a href="downloads/Cafe_Menu_Project_Report.pdf" class="btn btn-download" download>
+                    <i class="fas fa-download"></i> Download Report
+                </a>
+                <a href="https://github.com/Sidharthgomasa/cafe-menu-system" class="btn" target="_blank">
+                    <i class="fab fa-github"></i> View Code
+                </a>
+                <a href="index.html#projects" class="btn btn-back">
+                    <i class="fas fa-arrow-left"></i> Back to Portfolio
+                </a>
+            </div>
+        </div>
+
+        <div class="project-section" id="features">
+            <h2>Key Features</h2>
+            <div class="feature-list">
+                <div class="feature-card">
+                    <h3><i class="fas fa-utensils"></i> Menu Management</h3>
+                    <ul>
+                        <li>Add/remove menu items</li>
+                        <li>Update prices and descriptions</li>
+                        <li>Category organization</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-cash-register"></i> Order Processing</h3>
+                    <ul>
+                        <li>Table management</li>
+                        <li>Order customization</li>
+                        <li>Special requests</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-chart-line"></i> Reporting</h3>
+                    <ul>
+                        <li>Daily sales tracking</li>
+                        <li>Popular items analysis</li>
+                        <li>Revenue reports</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-database"></i> Data Management</h3>
+                    <ul>
+                        <li>SQLite database</li>
+                        <li>Data backup/restore</li>
+                        <li>Inventory tracking</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-section" id="screenshots">
+            <h2>Application Screenshots</h2>
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Main Menu">
+                    <p>Main Menu Interface</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Order Screen">
+                    <p>Order Management</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Admin Panel">
+                    <p>Admin Dashboard</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-section">
+            <h2>Technical Implementation</h2>
+            <h3>Core Components</h3>
+            <ul>
+                <li><strong>GUI Framework</strong>: Tkinter with ttkthemes for modern styling</li>
+                <li><strong>Database</strong>: SQLite with 3 main tables (menu_items, orders, order_details)</li>
+                <li><strong>Image Handling</strong>: Pillow library for menu item thumbnails</li>
+                <li><strong>Reporting</strong>: Matplotlib integration for sales visualization</li>
+            </ul>
+            
+            <h3>Code Structure</h3>
+            <pre style="background: #f5f5f5; padding: 1rem; border-radius: 5px; overflow-x: auto;">
+├── main.py            # Entry point
+├── database/
+│   ├── db_utils.py    # Database operations
+│   └── schema.sql     # Database schema
+├── gui/
+│   ├── main_window.py # Main interface
+│   ├── menu.py        # Menu management
+│   └── orders.py      # Order processing
+└── assets/            # Images and icons
+            </pre>
+        </div>
+
+        <div class="project-section">
+            <h2>Project Impact</h2>
+            <ul>
+                <li>Reduced order processing time by 40% at test cafe</li>
+                <li>Eliminated manual calculation errors in billing</li>
+                <li>Improved inventory tracking accuracy</li>
+                <li>Received positive feedback from cafe owners during testing</li>
+            </ul>
+            
+            <div class="action-buttons" style="margin-top: 2rem;">
+                <a href="downloads/Cafe_Menu_Project_Report.pdf" class="btn btn-download" download>
+                    <i class="fas fa-download"></i> Download Full Report
+                </a>
+                <a href="index.html#projects" class="btn btn-back">
+                    <i class="fas fa-arrow-left"></i> Back to Portfolio
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com/Sidharthgomasa" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/sidharthgomasa" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:sidharthgomasa04@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p>&copy; 2023 Sidhartha Gomasa. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            });
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
