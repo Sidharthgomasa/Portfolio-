@@ -331,6 +331,77 @@
             margin-top: auto;
         }
 
+        /* Certificates Section Styles */
+        .certificates-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .certificate-card {
+            background: var(--card);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .certificate-img {
+            height: 200px;
+            overflow: hidden;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .certificate-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .certificate-card:hover .certificate-img img {
+            transform: scale(1.05);
+        }
+
+        .certificate-info {
+            padding: 1.5rem;
+        }
+
+        .certificate-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .certificate-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        .certificate-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .certificate-meta i {
+            color: var(--primary);
+        }
+
+        .certificate-info p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
@@ -441,6 +512,10 @@
                 flex: 1 1 100%;
             }
             
+            .certificates-container {
+                grid-template-columns: 1fr;
+            }
+            
             .btn {
                 display: block;
                 width: 100%;
@@ -487,6 +562,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#certificates">Certificates</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li>
                     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -512,7 +588,11 @@
         <h2 class="section-title">About Me</h2>
         <div class="about-content">
             <div class="about-img">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Sidhartha Gomasa">
+                <img 
+                    src="https://drive.google.com/uc?export=view&id=1yfACVvyofRsL3m_tU-wCSatFJgipG-kG" 
+                    alt="My Profile Picture"
+                    style="width: 100%; border-radius: 10px;" 
+                >
             </div>
             <div class="about-text">
                 <h3>Hello! I'm Sidhartha</h3>
@@ -578,8 +658,9 @@
         <div class="project-grid">
             <div class="project-card">
                 <div class="project-img">
-                    <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a7c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Lung Cancer Detection">
-                </div>
+    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+         alt="Lung Cancer Detection Scan">
+</div>
                 <div class="project-info">
                     <h3>Lung Cancer Detection (SVM)</h3>
                     <p>CAD system using SVM to classify lung cancer stages from CT scans with 98% accuracy.</p>
@@ -608,130 +689,3 @@
             </div>
             <div class="project-card">
                 <div class="project-img">
-                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Cafe Menu">
-                </div>
-                <div class="project-info">
-                    <h3>Cafe Menu (Tkinter)</h3>
-                    <p>Streamlined cafe menu project developed during internship at Skilltimate Technologies.</p>
-                    <div class="project-links">
-                        <a href="cafe-menu-project.html" class="btn">View Details</a>
-                        <a href="#" class="btn" style="background: var(--dark);">
-                            <i class="fab fa-github"></i> Code
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2 class="section-title">Contact Me</h2>
-        <div class="contact-form">
-            <form id="contactForm">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" required placeholder="Your Name">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required placeholder="your.email@example.com">
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" required placeholder="Your message here..."></textarea>
-                </div>
-                <button type="submit" class="btn">Send Message</button>
-            </form>
-        </div>
-        <div class="contact-info">
-            <p>Or reach me directly at:</p>
-            <p><i class="fas fa-phone"></i> +91 8074736883</p>
-            <p><i class="fas fa-envelope"></i> sidharthgomasa04@gmail.com</p>
-        </div>
-</section>
-<footer>
-        <div class="social-links">
-            <a href="https://in.linkedin.com/in/sidharthgomasa" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/Sidharthgomasa" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="mailto:sidharthgomasa04@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="#" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-        </div>
-        <p>&copy; 2023 Sidhartha Gomasa. All rights reserved.</p>
-    </footer>
-
-    <script>
-        // Theme Toggle Functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-        let currentTheme = localStorage.getItem('theme') || 'light';
-
-        // Apply saved theme
-        if (currentTheme === 'dark') {
-            body.setAttribute('data-theme', 'dark');
-            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        }
-
-        // Toggle theme
-        themeToggle.addEventListener('click', () => {
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.removeAttribute('data-theme');
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-                localStorage.setItem('theme', 'light');
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-                localStorage.setItem('theme', 'dark');
-            }
-        });
-
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    navLinks.classList.remove('active');
-                }
-            });
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                if (window.innerWidth <= 768) {
-                    navLinks.classList.remove('active');
-                }
-                
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Form submission (simulated)
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Message sent! I\'ll get back to you soon.');
-            this.reset();
-        });
-
-        // Ensure content stays within containers on resize
-        window.addEventListener('resize', () => {
-            // This forces a reflow to prevent any layout issues
-            document.body.style.overflowX = 'hidden';
-        });
-    </script>
-</body>
-</html>
